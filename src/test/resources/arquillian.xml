@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<arquillian xmlns="http://jboss.org/schema/arquillian">
+    <container qualifier="chameleon" default="true">
+        <configuration>
+            <property name="chameleonTarget">wildfly:10.1.0.Final:managed</property>
+        </configuration>
+    </container>
+</arquillian>
