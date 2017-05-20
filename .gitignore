@@ -1,3 +1,9 @@
-yasson-jaxrs.iml
+.idea
+yasson-jaxrs-parent.iml
 target/
+
 example/yasson-jaxrs-sample.iml
+example/target
+
+yasson-jaxrs/yasson-jaxrs.iml
+yasson-jaxrs/target

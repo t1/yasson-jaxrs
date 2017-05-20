@@ -1,15 +1,16 @@
-package com.github.t1.yassonjaxrs;
+package com.github.t1.yassonjaxrs.test;
 
-import com.github.t1.testtools.WebArchiveBuilder;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.ws.rs.client.*;
 import javax.ws.rs.core.Response;
+import java.io.File;
 import java.net.URI;
 
 import static javax.ws.rs.core.MediaType.*;
@@ -17,19 +18,12 @@ import static javax.ws.rs.core.Response.Status.*;
 import static org.assertj.core.api.Assertions.*;
 
 @RunWith(Arquillian.class)
-public class IntegrationTest {
+public class SampleIT {
     private static final Client CLIENT = ClientBuilder.newClient();
 
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
-        return new WebArchiveBuilder("yasson-test.war")
-                .with(JaxRs.class, TestDto.class, TestBoundary.class)
-                .with(JsonbProducer.class, JsonMessageBodyReader.class, JsonMessageBodyWriter.class)
-                .library("javax.json.bind", "javax.json.bind-api")
-                .library("org.eclipse", "yasson")
-                .withBeansXml()
-                .print()
-                .build();
+        return ShrinkWrap.createFromZipFile(WebArchive.class, new File("target/yasson-jaxrs-sample.war"));
     }
 
     @ArquillianResource private URI baseUri;

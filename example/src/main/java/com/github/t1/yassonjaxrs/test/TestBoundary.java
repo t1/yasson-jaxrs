@@ -1,4 +1,4 @@
-package com.github.t1.yassonjaxrs;
+package com.github.t1.yassonjaxrs.test;
 
 import javax.ws.rs.*;
 
