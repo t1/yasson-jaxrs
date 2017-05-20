@@ -14,10 +14,11 @@ Simply add this to your pom.xml:
         <groupId>javax.json.bind</groupId>
         <artifactId>javax.json.bind-api</artifactId>
         <version>1.0.0-M2</version>
+        <scope>provided</scope>
     </dependency>
     <dependency>
-        <artifactId>yasson-jaxrs</artifactId>
         <groupId>com.github.t1</groupId>
+        <artifactId>yasson-jaxrs</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <scope>runtime</scope>
     </dependency>
