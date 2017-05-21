@@ -54,4 +54,13 @@ public class SampleIT {
         assertThat(response.getStatusInfo()).isEqualTo(OK);
         assertThat(response.readEntity(String.class)).isEqualTo("\n{\n    \"a\":\"foo\",\n    \"b\":\"bar\"\n}");
     }
+
+    @Test
+    public void shouldSerializeWithJsonbSerializer() throws Exception {
+        Response response = target().path("/bar").request(APPLICATION_JSON_TYPE)
+                                    .post(Entity.entity("{\"a\":\"b\"}", APPLICATION_JSON_TYPE));
+
+        assertThat(response.getStatusInfo()).isEqualTo(OK);
+        assertThat(response.readEntity(String.class)).isEqualTo("\n{\n    \"a+\":\"b-\"\n}");
+    }
 }

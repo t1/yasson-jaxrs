@@ -23,4 +23,8 @@ public class TestBoundary {
     @Path("/foo") @GET public Foo getFoo() {
         return new Foo("foo", "bar");
     }
+
+    @Path("/bar") @POST public Bar postBar(Bar bar) {
+        return new Bar(bar.getKey() + "+", bar.getValue() + "-");
+    }
 }

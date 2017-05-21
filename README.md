@@ -35,4 +35,4 @@ You can configure JSON-B by CDI-producing an instance of `JsonbConfig`, e.g.:
 
 `@Produces JsonbConfig config = new JsonbConfig().withFormatting(true);`
 
-`JsonbAdapter`s are automatically discovered (via CDI) and registered.
+`JsonbAdapter`s, `JsonbSerializer`, and `JsonbDeserializer`s are automatically discovered (via CDI) and registered.
