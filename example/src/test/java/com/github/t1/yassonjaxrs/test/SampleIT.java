@@ -35,7 +35,7 @@ public class SampleIT {
         Response response = target().request(APPLICATION_JSON_TYPE).get();
 
         assertThat(response.getStatusInfo()).isEqualTo(OK);
-        assertThat(response.readEntity(String.class)).isEqualTo("{\"eins\":\"uno\",\"zwei\":2}");
+        assertThat(response.readEntity(String.class)).isEqualTo("\n{\n    \"eins\":\"uno\",\n    \"zwei\":2\n}");
     }
 
     @Test
@@ -44,6 +44,14 @@ public class SampleIT {
                                     .post(Entity.entity("{\"eins\":\"uno\",\"zwei\":2}", APPLICATION_JSON_TYPE));
 
         assertThat(response.getStatusInfo()).isEqualTo(OK);
-        assertThat(response.readEntity(String.class)).isEqualTo("{\"eins\":\"uno+\",\"zwei\":3}");
+        assertThat(response.readEntity(String.class)).isEqualTo("\n{\n    \"eins\":\"uno+\",\n    \"zwei\":3\n}");
+    }
+
+    @Test
+    public void shouldSerializeWithJsonbAdapter() throws Exception {
+        Response response = target().path("/foo").request(APPLICATION_JSON_TYPE).get();
+
+        assertThat(response.getStatusInfo()).isEqualTo(OK);
+        assertThat(response.readEntity(String.class)).isEqualTo("\n{\n    \"a\":\"foo\",\n    \"b\":\"bar\"\n}");
     }
 }
